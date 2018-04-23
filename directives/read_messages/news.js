@@ -73,29 +73,27 @@ exports.run = (client, db, message, firecommands, trueintent, result, messageidA
         {
             extract({ uri: contextv[0].link }, (err, contextu) =>
             {
-                let favicon_link;
 
                 favicon(`http://${contextu.host}​`, function(err, favicon_url) {
-                    favicon_link = favicon_url;
-                    console.log(favicon_link)
-                });
 
                 const embed = new Discord.RichEmbed()
                     .setColor(14495300)
                     .setDescription(`${contextu.ogDescription}​`)
                     .setFooter(`Requested by ${message.author.tag} | User ID: ${message.author.id}`, message.author.avatarURL)
                     .setTitle(`${contextu.ogTitle}​`)
-                    .setAuthor(`${contextu.ogSiteName}​`, `http://www.livemint.com/favicon.ico`, `http://${contextu.host}​`, )
-                    .setImage(`${contextu.ogImage}​`)
-                    .setURL(`${contextu.ogUrl}​`);
+                    .setAuthor(`${contextu.ogSiteName}​`, `${favicon_url.replace('\u200B', "")}`, `http://${contextu.host}​`)
+                    .setImage(`${contextu.ogImage.replace('\u200B', "")}​`)
+                    .setURL(`${contextv[0].link.replace('\u200B', "")}​`);
 
                 let content = {embed};
 
                 RunSenderFile(`./../../discord/dc_out/dc_outmessage.js`, message, content, messageidArr)
+
+                });
             });
 
         });
-        
+
     }
     catch (err)
     {
