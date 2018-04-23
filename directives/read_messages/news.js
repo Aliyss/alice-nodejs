@@ -73,7 +73,7 @@ exports.run = (client, db, message, firecommands, trueintent, result, messageidA
         {
             extract({ uri: contextv[0].link }, (err, contextu) =>
             {
-
+                console.log(encodeURI(contextv[0].link));
                 favicon(`http://${contextu.host}​`, function(err, favicon_url) {
 
                 const embed = new Discord.RichEmbed()
@@ -81,9 +81,9 @@ exports.run = (client, db, message, firecommands, trueintent, result, messageidA
                     .setDescription(`${contextu.ogDescription}​`)
                     .setFooter(`Requested by ${message.author.tag} | User ID: ${message.author.id}`, message.author.avatarURL)
                     .setTitle(`${contextu.ogTitle}​`)
-                    .setAuthor(`${contextu.ogSiteName}​`, `${favicon_url.replace('\u200B', "")}`, `http://${contextu.host}​`)
-                    .setImage(`${contextu.ogImage.replace('\u200b', "")}​`)
-                    .setURL(`${contextv[0].link.replace('\u200b', "")}​`);
+                    .setAuthor(`${contextu.ogSiteName}​`, `${favicon_url.replace('\u200B', "")}`, `https://${contextu.host}​`)
+                    .setImage(`${contextu.ogImage.replace('200b', "")}​`)
+                    .setURL(`${decodeURI(contextv[0].link)}​`);
 
                 let content = {embed};
 
