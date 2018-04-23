@@ -82,8 +82,8 @@ exports.run = (client, db, message, firecommands, trueintent, result, messageidA
                     .setFooter(`Requested by ${message.author.tag} | User ID: ${message.author.id}`, message.author.avatarURL)
                     .setTitle(`${contextu.ogTitle}​`)
                     .setAuthor(`${contextu.ogSiteName}​`, `${favicon_url.replace('\u200B', "")}`, `http://${contextu.host}​`)
-                    .setImage(`${contextu.ogImage.replace('\u200B', "")}​`)
-                    .setURL(`${contextv[0].link.replace('\u200B', "")}​`);
+                    .setImage(`${contextu.ogImage.replace('\u200b', "")}​`)
+                    .setURL(`${contextv[0].link.replace('\u200b', "")}​`);
 
                 let content = {embed};
 
