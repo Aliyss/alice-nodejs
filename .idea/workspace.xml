@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/database/db_out/db_outmessage.js" line="5" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b68bd76b-5bc9-46c2-85c6-77d38d51082a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/directives/read_messages/news.js" beforeDir="false" afterPath="$PROJECT_DIR$/directives/read_messages/news.js" afterDir="false" />
-    </list>
+    <list default="true" id="b68bd76b-5bc9-46c2-85c6-77d38d51082a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,8 +53,8 @@
       <file leaf-file-name="news.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/directives/read_messages/news.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="75" column="57" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
+            <state relative-caret-position="342">
+              <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -294,12 +292,12 @@
       <updated>1524393688118</updated>
       <workItem from="1524393689889" duration="18220000" />
       <workItem from="1524415813836" duration="19947000" />
-      <workItem from="1524472957078" duration="12577000" />
+      <workItem from="1524472957078" duration="12820000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50744000" />
+    <option name="totallyTimeSpent" value="50987000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -326,7 +324,7 @@
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4090431" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4090431" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -641,8 +639,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/directives/read_messages/news.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="75" column="57" selection-start-line="75" selection-start-column="57" selection-end-line="75" selection-end-column="57" />
+        <state relative-caret-position="342">
+          <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
