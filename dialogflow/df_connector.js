@@ -47,6 +47,7 @@ exports.run = (client, db, message, prefix_result) => {
         lastHelloCommandDate = message.createdTimestamp;
         timer = setTimeout(timeout, 150000, collectorAlice, lastHelloCommandDate);
         console.log(`${message.author.username}#${message.author.discriminator} requested: ${message.content}`);
+        message.channel.startTyping(3);
 
         RunCommandFile(`./df_in/df_inopening.js`, client, db, message, sID, messageidArr, collectorAlice);
 
