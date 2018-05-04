@@ -21,7 +21,7 @@ exports.run = (client, db, message, firecommands, trueintent, result, messageidA
     {
         let news_link;
         let contextv = [];
-        console.log(result.parameters);
+        //console.log(result.parameters);
         if (!(result.parameters.fields['news_section']['stringValue'].length === 0))
         {
             let news_section = result.parameters.fields['news_section']['stringValue'];
@@ -73,7 +73,7 @@ exports.run = (client, db, message, firecommands, trueintent, result, messageidA
         {
             extract({ uri: contextv[0].link }, (err, contextu) =>
             {
-                console.log(encodeURI(contextv[0].link));
+                //console.log(encodeURI(contextv[0].link));
                 favicon(`http://${contextu.host}​`, function(err, favicon_url) {
 
                 const embed = new Discord.RichEmbed()

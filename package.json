@@ -7,6 +7,7 @@
     "favicon": "0.0.2",
     "feedparser": "^2.2.9",
     "firebase-admin": "^5.12.0",
+    "libgen": "^1.0.0",
     "meta-extractor": "^1.4.0",
     "request": "latest",
     "weather-js": "^2.0.0"
