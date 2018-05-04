@@ -15,6 +15,16 @@ exports.run = (client, db, path, guild, intent) => {
             //Firebase: Delete Guild Document
             path.delete();
             break;
+        case "prefixChange":
+            //Firebase: Change Prefix
+            let prefixGuild = path.set({
+                name: guild.name,
+                id: guild.id,
+                prefix: "hey alice"
+            }, {
+                merge: true
+            });
+            break;
         default:
             break;
     }

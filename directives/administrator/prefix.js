@@ -13,11 +13,7 @@ function RunSenderFile(file, object, content, messageidArr) {
 
 exports.run = (client, db, message, firecommands, trueintent, result, messageidArr) =>
 {
-    const embed = new Discord.RichEmbed()
-        .setTitle(`🏓 ${result.fulfillmentText}`)
-        .setColor(14495300);
-
-    let content = {embed};
-
+    path = db.collection('discord').doc('configuration').collection('discord_guilds').doc(object.id);
+    RunCommandFile(`./../../database/db_in/db_inprefix.js`, client, path, object, intent);
     RunSenderFile(`./../../discord/dc_out/dc_outmessage.js`, message, content, messageidArr)
 };
