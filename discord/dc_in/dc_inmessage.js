@@ -17,7 +17,7 @@ exports.run = (client, db, message, prefix_result, reset) => {
         uID = "";
         reset = false;
     }
-    else if (prefix_result.toLowerCase() === message.content.toLowerCase() && uID !== `${message.author.id}?${message.channel.id}`){
+    else if (prefix_result.toLowerCase().replace(/ /g,'') === message.content.toLowerCase().replace(/ /g,'') && uID !== `${message.author.id}?${message.channel.id}`){
         uID = `${message.author.id}?${message.channel.id}`;
         RunCommandFile(`./../../dialogflow/df_connector.js`, client, db, message, prefix_result)
     }

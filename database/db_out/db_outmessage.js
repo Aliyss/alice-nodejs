@@ -68,7 +68,7 @@ exports.run = (client, db, path, message, intent) => {
         //Firebase: Get Prefix from User Document
         let userprofile = GetUserProfile(client, db, path, message);
         userprofile.then(function (prefix_result) {
-            if (message.content.toLowerCase().startsWith(prefix_result.toLowerCase())) {
+            if (message.content.toLowerCase().replace(/ /g,'').startsWith(prefix_result.toLowerCase().replace(/ /g,''))) {
                 //Export: to db_inmessage.js
                 RunCommandFile(`./../../discord/dc_in/dc_inmessage.js`, client, db, message, prefix_result)
             }
@@ -80,7 +80,7 @@ exports.run = (client, db, path, message, intent) => {
         //Firebase: Get Prefix from Guild Document
         let guildprofile = GetGuildProfile(client, db, guildpath, message);
         guildprofile.then(function (prefix_result) {
-            if (message.content.toLowerCase().startsWith(prefix_result.toLowerCase())) {
+            if (message.content.toLowerCase().replace(/ /g,'').startsWith(prefix_result.toLowerCase().replace(/ /g,''))) {
                 //Firebase: Create User Document in case not set
                 GetUserProfile(client, db, path, message);
                 //Export: to dc_inmessage.js

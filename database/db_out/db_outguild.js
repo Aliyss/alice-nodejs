@@ -1,5 +1,5 @@
 //Export: from db_inserver.js
-exports.run = (client, db, path, guild, intent) => {
+exports.run = (client, db, path, guild, intent, obOne) => {
     switch (intent) {
         case "guildCreate":
             //Firebase: Create Guild Document
@@ -19,8 +19,7 @@ exports.run = (client, db, path, guild, intent) => {
             //Firebase: Change Prefix
             let prefixGuild = path.set({
                 name: guild.name,
-                id: guild.id,
-                prefix: "hey alice"
+                prefix: obOne
             }, {
                 merge: true
             });

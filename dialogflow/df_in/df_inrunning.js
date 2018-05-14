@@ -1,5 +1,6 @@
 /*Local Variables*/
 let commandFile;
+let intentnamemain;
 
 /*Local Functions*/
 //Run File
@@ -40,6 +41,7 @@ exports.run = (client, db, message, sessionClient, sID, messageidArr, collectorA
 {
     try
     {
+
         //Firebase: Get Bot Toggle from User Document
         let path = db.collection('discord').doc('configuration').collection('discord_users').doc(message.author.id);
         let userprofile = GetUserProfile(client, db, path, message);
@@ -56,11 +58,14 @@ exports.run = (client, db, message, sessionClient, sID, messageidArr, collectorA
             const projectId = `aliyssium-discordbot`;
             const sessionId = `${sID}`;
             let query;
+            let jumper;
             const languageCode = 'en-US';
 
-            if (bot_id !== client.user.id) {
+            console.log(intentnamemain);
+
+            if (bot_id !== client.user.id && intentnamemain !== "smalltalk.greetings.bye") {
                 let chars = {'1':'a','2':'b','3':'c','4':'d','5':'e','6':'f','7':'g','8':'h','9':'i', '0':'z'};
-                let jumper = bot_id.replace(/[1234567890]/g, m => chars[m]);
+                jumper = bot_id.replace(/[1234567890]/g, m => chars[m]);
                 query = jumper + `: ${message.content}`;
             }
             else {
@@ -85,8 +90,9 @@ exports.run = (client, db, message, sessionClient, sID, messageidArr, collectorA
                 {
                     let result = responses[0].queryResult;
                     const intentname = result.intent.displayName;
+                    intentnamemain = result.intent.displayName;
 
-                    console.log(result.parameters);
+                    //console.log(intentname);
                     console.log(`    Response: ${result.fulfillmentText}`);
 
                     let getDoc = botCommands.get()
@@ -111,16 +117,18 @@ exports.run = (client, db, message, sessionClient, sID, messageidArr, collectorA
                                     ConversationPurge(true)
                                         .then( () => collectorAlice.stop());
                                 }
+                                return;
                             }
-                            if (!firecommands[intentname]) {
-                                RunSenderFile(`./../../discord/dc_out/dc_outmessage.js`, message, `${result.fulfillmentText}`, messageidArr);
-                            }
-                            else if (firecommands[intentname]) {
-                                let trueintent = firecommands[intentname];
-                                let command_name = trueintent.name;
-                                let command_group = trueintent.permissions;
 
-                                if (bot_id === client.user.id) {
+                            if (bot_id === client.user.id) {
+                                if (!firecommands[intentname]) {
+                                    RunSenderFile(`./../../discord/dc_out/dc_outmessage.js`, message, `${result.fulfillmentText}`, messageidArr);
+                                }
+                                else if (firecommands[intentname]) {
+                                    let trueintent = firecommands[intentname];
+                                    let command_name = trueintent.name;
+                                    let command_group = trueintent.permissions;
+
                                     if (result.allRequiredParamsPresent === true) {
                                         if (message.member.permissionsIn(message.channel).has(command_group.toUpperCase()) === true) {
                                             RunCommandFile(`./../../directives/${command_group}/${command_name}.js`, client, db, message, firecommands, trueintent, result, messageidArr);
@@ -129,21 +137,55 @@ exports.run = (client, db, message, sessionClient, sID, messageidArr, collectorA
                                             RunSenderFile(`./../../discord/dc_out/dc_outmessage.js`, message, "You don't have sufficient permissions to initiate the command.", messageidArr);
                                         }
                                     }
-                                    else
-                                    {
+                                    else {
                                         RunSenderFile(`./../../discord/dc_out/dc_outmessage.js`, message, `${result.fulfillmentText}`, messageidArr);
                                     }
                                 }
-                                else
-                                {
-                                    if (command_name === "bot_disconnector")
-                                    {
-                                        RunCommandFile(`./../read_messages/bot_disconnector.js`);
+                            }
+                            else {
+                                if (result.parameters.fields[`connection_${jumper}`]) {
+                                    let intent_bot = result.parameters.fields[`connection_${jumper}`]['stringValue'];
+
+                                    if (!firecommands[intent_bot]) {
+                                        RunSenderFile(`./../../discord/dc_out/dc_outmessage.js`, message, `${result.fulfillmentText}`, messageidArr);
                                     }
-                                    else
-                                    {
-                                        RunCommandFile(`./../../directives/${command_group}/${command_name}.js`, client, db, message, firecommands, trueintent, result, messageidArr);
+                                    else if (firecommands[intent_bot]) {
+                                        let trueintent = firecommands[intent_bot];
+                                        let command_name = trueintent.name;
+
+                                        RunCommandFile(`./../../directives/bot_parser/bot_running.js`, client, db, message, firecommands, trueintent, result, messageidArr);
+
                                     }
+                                }
+                                else {
+                                    let aliceConfig = db.collection('discord').doc('configuration').collection('discord_bots').doc(`${client.user.id}`);
+                                    let aliceCommands = aliceConfig.collection('settings').doc('commands');
+
+                                    let getAlice = aliceCommands.get()
+                                        .then(doc => {
+                                            let Truecommands = doc.data();
+
+                                            if (!Truecommands[intentname]) {
+                                                RunSenderFile(`./../../discord/dc_out/dc_outmessage.js`, message, `${result.fulfillmentText}`, messageidArr);
+                                            }
+                                            else if (Truecommands[intentname]) {
+                                                let trueintent = Truecommands[intentname];
+                                                let command_name = trueintent.name;
+                                                let command_group = trueintent.permissions;
+
+                                                if (result.allRequiredParamsPresent === true) {
+                                                    if (message.member.permissionsIn(message.channel).has(command_group.toUpperCase()) === true) {
+                                                        RunCommandFile(`./../../directives/${command_group}/${command_name}.js`, client, db, message, Truecommands, trueintent, result, messageidArr);
+                                                    }
+                                                    else {
+                                                        RunSenderFile(`./../../discord/dc_out/dc_outmessage.js`, message, "You don't have sufficient permissions to initiate the command.", messageidArr);
+                                                    }
+                                                }
+                                                else {
+                                                    RunSenderFile(`./../../discord/dc_out/dc_outmessage.js`, message, `${result.fulfillmentText}`, messageidArr);
+                                                }
+                                            }
+                                        })
                                 }
                             }
                         })

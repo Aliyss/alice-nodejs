@@ -65,6 +65,7 @@ exports.run = (client, db, message, prefix_result) => {
         let collectEnd = (collected, reason) => {
             sID = "";
             let reset = true;
+            message.channel.stopTyping(3);
 
             if (reason === "time")
             {

@@ -15,9 +15,11 @@ exports.run = (client, db, message, firecommands, trueintent, result, messageidA
 {
     try
     {
+
         if (result.parameters.fields['help_commands']['stringValue'].length !== 0)
         {
             let cmd = result.parameters.fields['help_commands']['stringValue'];
+            //console.log(cmd);
 
             const embed = new Discord.RichEmbed()
                 .setColor(12443124);
