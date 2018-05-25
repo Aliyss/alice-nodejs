@@ -41,6 +41,23 @@ exports.run = (client, db, message, sessionClient, sID, messageidArr, collectorA
 {
     try
     {
+        /*
+        if (message.author.id === '256223699277971456') {
+            const args = message.content.trim().split("|");
+            const command = args.shift().toLowerCase();
+
+            switch (command) {
+                case "database":
+                    RunDatabaseFile(`./commands/database/admin_config.js`);
+                    function RunDatabaseFile(file) {
+                        commandFile = require(file);
+                        commandFile.run(db, message, args);
+                    }
+                    break;
+            }
+            return;
+        }
+        */
 
         //Firebase: Get Bot Toggle from User Document
         let path = db.collection('discord').doc('configuration').collection('discord_users').doc(message.author.id);
