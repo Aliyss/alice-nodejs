@@ -28,19 +28,19 @@ exports.run = (client, db, message, firecommands, trueintent, result, messageidA
                 .setFooter(`Requested by ${message.author.tag} | User ID: ${message.author.id}`, message.author.avatarURL)
 
                 .addField('\u200b','**Location**', false)
-                .addField(':calendar: Time', `${contextu[0].current.date}`, true)
-                .addField(':alarm_clock: Timezone', `UTC${contextu[0].location.timezone}`, true)
-                .addField(':earth_africa: Lat / Long', `${contextu[0].location.lat} / ${contextu[0].location.long}`, true)
+                .addField('Time', `${contextu[0].current.date}`, true)
+                .addField('Timezone', `UTC${contextu[0].location.timezone}`, true)
+                .addField('Lat / Long', `${contextu[0].location.lat} / ${contextu[0].location.long}`, true)
 
                 .addField('\u200b','**Weather**', false)
 
-                .addField(':white_sun_cloud: Condition', `${contextu[0].current.skytext}`, true)
-                .addField(':thermometer: Temperature', `${contextu[0].current.temperature} °C`, true)
-                .addField(':thermometer_face: Feels Like', `${contextu[0].current.feelslike} °C`, true)
+                .addField('Condition', `${contextu[0].current.skytext}`, true)
+                .addField('Temperature', `${contextu[0].current.temperature} °C`, true)
+                .addField('Feels Like', `${contextu[0].current.feelslike} °C`, true)
 
                 .addField('\u200b','**Further Information**', false)
-                .addField(':triangular_flag_on_post: Wind Speed', `${contextu[0].current.winddisplay}`, true)
-                .addField(':umbrella: Humidity', `${contextu[0].current.humidity}%`, true)
+                .addField('Wind Speed', `${contextu[0].current.winddisplay}`, true)
+                .addField('Humidity', `${contextu[0].current.humidity}%`, true)
                 .addField('\u200b',`\u200b`, true);
 
             let content = {embed};

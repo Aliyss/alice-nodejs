@@ -38,15 +38,15 @@ exports.run = (client, db, message, firecommands, trueintent, result, messageidA
             .setFooter(`Requested by ${message.author.username}#${message.author.discriminator} | User ID: ${message.author.id}`, `${message.author.avatarURL}`)
 
             .addField('\u200b','**Book Information**')
-            .addField(":closed_book: Title", `${bookdata[0].title.replace(/.{54}\S*\s+/g, "$&@").split(/\s+@/).join("\n")}\n`, true)
-            .addField(":page_facing_up: Pages", `${bookdata[0].pages}`, true)
-            .addField(":pen_ballpoint: Author", `${bookdata[0].author.replace(/.{20}\S*\s+/g, "$&@").split(/\s+@/).join("\n")}\u200b`, true)
+            .addField("Title", `${bookdata[0].title.replace(/.{54}\S*\s+/g, "$&@").split(/\s+@/).join("\n")}\n`, true)
+            .addField("Pages", `${bookdata[0].pages}`, true)
+            .addField("Author", `${bookdata[0].author.replace(/.{20}\S*\s+/g, "$&@").split(/\s+@/).join("\n")}\u200b`, true)
 
             .addField('\u200b','**Further Information**')
-            .addField(":printer: Publisher", `${bookdata[0].publisher.replace(/.{20}\S*\s+/g, "$&@").split(/\s+@/).join("\n")}\u200b`, true)
-            .addField(":speech_balloon: Language", `${bookdata[0].language}\u200b`, true)
-            .addField(":calendar: Year", `${bookdata[0].year}\u200b`, true)
-            .addField(":link: Link", `[Download Link](${'http://download1.libgen.io/ads.php?md5=' + bookdata[0].md5.toLowerCase()})`, true);
+            .addField("Publisher", `${bookdata[0].publisher.replace(/.{20}\S*\s+/g, "$&@").split(/\s+@/).join("\n")}\u200b`, true)
+            .addField("Language", `${bookdata[0].language}\u200b`, true)
+            .addField("Year", `${bookdata[0].year}\u200b`, true)
+            .addField("Link", `[Download Link](${'http://download1.libgen.io/ads.php?md5=' + bookdata[0].md5.toLowerCase()})`, true);
 
         if (!(bookdata[0].coverurl === 0))
         {
