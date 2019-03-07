@@ -16,7 +16,7 @@ function RunCommandFile(file, object, intent) {
 
 
 //Client: login
-client.login('NDI0NjA5NDMzOTg1ODc1OTg4.DY7X-A.DNZ4tz11m6tu905B0cLwwMimMnI');
+client.login(process.env.SECRET);
 
 //Client: ready
 client.on('ready', () => {
